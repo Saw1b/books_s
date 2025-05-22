@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --watch app.js",
+    "start": "node --watch app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "test": "jest",
+  "dependencies": {
+    "express": "^5.1.0",
+    "lodash": "^4.17.21",
+    "pg": "^8.16.0",
+    "sequelize": "^6.37.7"
+  },
+  "keywords": [],
+  "description": ""
+}
