@@ -33,4 +33,13 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
+db.hello = require("./models/book.model.js")(sequelize, DataTypes);
+db.user = require("./models/user.model.js")(sequelize, DataTypes);
+db.products = require("./models/product.model.js")(sequelize, DataTypes);
+
+
+sequelize.sync({alter: false}).then(()=>{
+    console.log("table created")
+})
+
 module.exports = db
