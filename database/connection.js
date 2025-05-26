@@ -15,7 +15,7 @@ const sequelize = new Sequelize("postgresql://postgres.zvzzilcnpfibgvdqghww:cOp3
   }
 });
 
-
+//2nd time
 sequelize.authenticate()
 .then(()=>{
     console.log("connection is succesful")
