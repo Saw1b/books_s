@@ -30,3 +30,5 @@ app.post("/we",(req,res)=>{
 app.listen(3000,function(){
     console.log("server is running")
 })
+
+//read test
