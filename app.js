@@ -1,33 +1,28 @@
 const express = require("express")
+// const { books } = require("./database/connection")
+const { fetchBooks, addBook, deleteBook, editBook } = require("./controllers/bookController")
+const bookRoute = require("./routes/bookRoute")
+
 const app = express()
 
 require("./database/connection")
+app.use(express.json())
+app.use("",bookRoute)
 
+app.get("/books",fetchBooks)
 
-app.get("/",(req,res)=>{
-    res.send("hello world")
-})
-
-app.get("/about",(req,res)=>{
-    res.send("about")
+app.post("/books",addBook)
     
-})
-app.get("/contact",(req,res)=>{
-    res.send({
-        name:"John Doe",
-        email:"johndoe@gmail.com",
-    }
-    )
-
-})
+app.delete("/books/:id",deleteBook)
+app.patch("/books/:id",editBook)
 
 // postgresql://postgres.zvzzilcnpfibgvdqghww:aS1binop@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
 
-app.post("/we",(req,res)=>{
-    res.send("contact")
-})
+// app.post("/we",(req,res)=>{
+//     res.send("contact")
+// })
 
-app.listen(3000,function(){
+app.listen(4000,function(){
     console.log("server is running")
 })
 

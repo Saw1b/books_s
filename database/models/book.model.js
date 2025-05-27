@@ -1,11 +1,11 @@
 const bookModel = (sequelize, DataTypes) => {
-    sequelize.define("book",{
+    const Book = sequelize.define("book",{
         bookName:{
             type:DataTypes.STRING,
             allowNull: false,
         },
         bookPrice:{
-            type:DataTypes.INTEGER,
+            type:DataTypes.FLOAT,
             allowNull: false,
         },
         bookAuthor:{
@@ -17,7 +17,7 @@ const bookModel = (sequelize, DataTypes) => {
 
     })
     console.log("book model is created")
-    return bookModel
+    return Book
 }
 
 module.exports = bookModel
