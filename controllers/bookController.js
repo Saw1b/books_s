@@ -50,7 +50,7 @@ exports.editBook = async function(req,res){
      // logic to update book
     // kun id ko chai edit garne tyo id linu paryo . 
     const id = req.params.id
-    // k k update garne tw .. 
+    
     const {bookName,price,bookAuthor,bookGenre} = req.body
 
     await books.update({bookName,price, bookAuthor,bookGenre },{

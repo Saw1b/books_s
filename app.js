@@ -9,9 +9,9 @@ require("./database/connection")
 app.use(express.json())
 app.use("",bookRoute)
 
-app.get("/books",fetchBooks)
+app.get("/books/:id",fetchBooks)
 
-app.post("/books",addBook)
+app.post("/books/:id",addBook)
     
 app.delete("/books/:id",deleteBook)
 app.patch("/books/:id",editBook)
