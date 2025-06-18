@@ -10,3 +10,9 @@ router.route("/:id").delete(deleteBook).patch(editBook).get(singleFetchBook)
 // router.delete("/books",deleteBook) 
 
 module.exports = router    
+
+
+
+// curl -X POST http://localhost:4000/books \
+//      -H "Content-Type: application/json" \
+//      -d '{"bookName": "Example", "bookPrice": 20, "bookAuthor": "Ram", "bookYear": 2020}'

@@ -11,23 +11,35 @@ exports.fetchBooks = async function(req,res){
 
 exports.addBook = async (req, res) => {
   try {
-    const { bookName, bookAuthor, bookPrice, bookGenre } = req.body;
+    // Check if req.body exists
+    if (!req.body) {
+      return res.status(400).json({ error: "Request body is missing" });
+    }
 
-    if (bookPrice == null) {
-      return res.status(400).json({ error: "bookPrice is required" });
+    const { bookName, bookAuthor, bookPrice, bookYear } = req.body;
+
+    // Validate required fields
+    if (!bookName || bookPrice === undefined) {
+      return res.status(400).json({ 
+        error: "bookName and bookPrice are required",
+        receivedData: req.body // Helps debugging
+      });
     }
 
     const newBook = await books.create({
       bookName,
       bookAuthor,
       bookPrice,
-      bookGenre, // include this only if it's part of your model
+      bookYear, // Only included if it's part of the model
     });
 
     res.status(201).json(newBook);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
+    console.error("Error adding book:", error);
+    res.status(500).json({ 
+      error: "Server error",
+      details: error.message // More detailed error info
+    });
   }
 };
 
@@ -51,9 +63,9 @@ exports.editBook = async function(req,res){
     // kun id ko chai edit garne tyo id linu paryo . 
     const id = req.params.id
     
-    const {bookName,price,bookAuthor,bookGenre} = req.body
+    const {bookName,price,bookAuthor,bookYear} = req.body
 
-    await books.update({bookName,price, bookAuthor,bookGenre },{
+    await books.update({bookName,price, bookAuthor,bookYear },{
         where : {
             id : id
         }
